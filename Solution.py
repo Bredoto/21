@@ -72,23 +72,30 @@ def SillyGame(prize,player,Open):
 
 
 def Game():
+    GameCounter = 0
     silly_counter = 0
     clever_counter = 0
-    prize = random.randint(1,3)
-    print('prize = ', prize)
-    player = random.randint(1,3)
-    print('player = ', player)
-    Open = ShowManOpenOneDoor(prize, player)
-    print('Opened Door = ',Open)
-    #print('Silly Player Strategy')
-    silly = SillyGame(prize, player, Open)
-    #print('Clever Player Strategy')
-    clever = CleverGame(prize, player, Open)
-    if silly == 1:
-        silly_counter += 1
-    else:
-        clever_counter += 1
-    print("Silly = " ,silly_counter,"Clever = ",clever_counter )
+    while GameCounter < 100000:
+        GameCounter += 1
+        prize = random.randint(1, 3)
+        #print('prize = ', prize)
+        player = random.randint(1, 3)
+        #print('player = ', player)
+        Open = ShowManOpenOneDoor(prize, player)
+        #print('Opened Door = ', Open)
+        # print('Silly Player Strategy')
+        silly = SillyGame(prize, player, Open)
+        # print('Clever Player Strategy')
+        clever = CleverGame(prize, player, Open)
+        if silly == 1:
+            silly_counter += 1
+        else:
+            clever_counter += 1
+        print("Silly Wins in ", (silly_counter/GameCounter)*100,"%", "Clever wins in ", (clever_counter/GameCounter)*100, "%" )
+
+
+
+
 
 
 def main():
